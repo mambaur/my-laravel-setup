@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
@@ -128,5 +130,15 @@
                 </div>
             </div>
         </div>
+
+        <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
+        <script src="{{ asset('/js/app.js') }}"></script>
+        <script>
+            window.Echo.channel('requestStatus') // Broadcast channel name
+                .listen('ApprovalRequest', (e) => { // Message name
+                    console.log(e); // kita buat untuk menampilkan pesan pada console browser
+                }
+            );
+        </script>
     </body>
 </html>
