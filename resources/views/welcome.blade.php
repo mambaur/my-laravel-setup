@@ -133,12 +133,27 @@
 
         <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
         <script src="{{ asset('/js/app.js') }}"></script>
+
+        {{-- <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script> --}}
         <script>
-            window.Echo.channel('requestStatus') // Broadcast channel name
-                .listen('ApprovalRequest', (e) => { // Message name
-                    console.log(e); // kita buat untuk menampilkan pesan pada console browser
+            console.log('loading socket...');
+            window.Echo.channel(`requestStatus`)
+                .listen('ApprovalRequest', (e) => {
+                    console.log(e); 
+                    console.log('hallo');
                 }
             );
+
+            // var pusher = new Pusher("f1d6988d1700c71e7895", {
+            //     cluster: "ap1",
+            // });
+            
+            // var channel = pusher.subscribe("private-requestStatus");
+            
+            // var channel = pusher.subscribe('private-App.User.{id}');
+            // channel.bind(`App\\Events\\ApprovalRequest`, (data) => {
+            //     console.log(data)
+            // });
         </script>
     </body>
 </html>

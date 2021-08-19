@@ -14,29 +14,37 @@ class ApprovalRequest implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $id;
+    public $param;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct($param)
     {
-        $this->id = $id;
+        $this->param = $param;
     }
-
-    
 
     /**
      * Get the data to broadcast.
      *
      * @return array
      */
-    public function broadcastWith()
-    {
-        return ['id' => 'Ini adalah data '.$this->id];
-    }
+    // public function broadcastWith()
+    // {
+    //     return ['param' => 'Ini adalah data '.$this->param];
+    // }
+
+    /**
+     * The event's broadcast name.
+     *
+     * @return string
+     */
+    // public function broadcastAs()
+    // {
+    //     return 'server.created';
+    // }
 
     /**
      * Get the channels the event should broadcast on.

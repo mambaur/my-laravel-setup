@@ -18,14 +18,16 @@ class CreateRequest implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    public $param;
+
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($param)
     {
-        //
+        $this->param = $param;
     }
 
     /**
@@ -36,7 +38,7 @@ class CreateRequest implements ShouldQueue
     public function handle()
     {
         Category::create([
-            'name' => 'Programming'
+            'name' => $this->param
         ]);
 
         

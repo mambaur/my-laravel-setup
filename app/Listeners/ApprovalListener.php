@@ -30,16 +30,12 @@ class ApprovalListener
      */
     public function handle(ApprovalRequest $event)
     {
-        CreateRequest::dispatch();
+        CreateRequest::dispatch($event->param);
         
-        if(Auth::check()){
-            $user = User::find(Auth::user()->id);
-
-            // Send notif
-            // Notification::send($user, new ApprovalNotification);
-
-            // Or use this
-            $user->notify(new ApprovalNotification());
-        }
+        // if(Auth::check()){
+        //     $user = User::find(Auth::user()->id);
+            
+        //     $user->notify(new ApprovalNotification());
+        // }
     }
 }
